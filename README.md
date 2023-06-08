@@ -9,8 +9,9 @@ A package to make an LLM talk with itself for eternity.
     - Before running `pip install -r prod.txt` as mentioned in the first step of the [Setup](#setup) section below:
       1. Remove `torch`, `torchvision`, and `torchaudio` from `prod.txt`
       1. Follow the instructions [here](https://pytorch.org/get-started/locally/) to install PyTorch without CUDA support
-- ~6GB of free disk space (for the LLM)
-- ~15GB of RAM (for the LLM)
+- For the default LLM:
+  - ~6GB of free disk space
+  - ~15GB of RAM
 
 ## Setup
 
@@ -37,7 +38,7 @@ A package to make an LLM talk with itself for eternity.
 1. Run the package:
 
    ```bash
-   python -c "from theendisnever.theend import isnever; isnever()"
+   python -c "from theendisnever.theend import isnever; isnever(model_name='Fredithefish/ScarletPajama-3B-HF', prompt='THE END IS NEVER THE END IS NEVER ', max_memory_ratio=0.25)"
    ```
 
 ## Contributing
