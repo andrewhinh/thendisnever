@@ -1,6 +1,6 @@
 # The End is Never
 
-A script to make an LLM talk with itself until enlightenment.
+A script to make an LLM talk with itself for eternity.
 
 ## Requirements
 
@@ -34,4 +34,5 @@ A script to make an LLM talk with itself until enlightenment.
 
    ```bash
    . ./run.sh
+   # This reruns `main.py` in case downloading model/some other issue occurs, so rest assured this will happen for eternity.
    ```
