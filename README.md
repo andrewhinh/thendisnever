@@ -1,4 +1,4 @@
-# The End is Never
+# [The End is Never](pypi.org/project/theendisnever/)
 
 A package to make an LLM talk with itself for eternity.
 
