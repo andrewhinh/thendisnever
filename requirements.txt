@@ -39,7 +39,6 @@ rich==13.4.1
 SecretStorage==3.3.3
 six==1.16.0
 sympy==1.11.1
-theendisnever==1.0.0
 tokenizers==0.13.3
 torch==2.0.1+cu118
 torchaudio==2.0.2+cu118

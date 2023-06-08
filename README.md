@@ -2,18 +2,27 @@
 
 A package to make an LLM talk with itself for eternity.
 
-## Requirements
+```python
+from theendisnever.theend import isnever
+isnever(
+  model_name='Fredithefish/ScarletPajama-3B-HF', # Default LLM
+  prompt='THE END IS NEVER THE END IS NEVER ', # Default prompt
+  max_memory_ratio=0.25 # Default % of latest tokens to remember
+)
+```
 
-- GPU with CUDA support (recommended, can use Google Colab)
-  - If you want to use the CPU (not recommended because it's slow, but it works):
-    - Before running `pip install -r prod.txt` as mentioned in the first step of the [Setup](#setup) section below:
-      1. Remove `torch`, `torchvision`, and `torchaudio` from `prod.txt`
-      1. Follow the instructions [here](https://pytorch.org/get-started/locally/) to install PyTorch without CUDA support
-- For the default LLM:
-  - ~6GB of free disk space
-  - ~15GB of RAM
+## Notes
 
-## Setup
+For the default LLM (which you can change as shown above), you'll need at least:
+
+- ~ 6GB of free disk space
+- ~ 15GB of RAM
+
+When running `isnever()` for the first time, it will download the model and tokenizer from HuggingFace. This will take a while, but it only needs to be done once.
+
+If you want to use the CPU (not recommended because it's slow, but it works), make sure you have [PyTorch for CPU](https://pytorch.org/get-started/locally/) installed.
+
+## Contributing
 
 1. Install conda if necessary:
 
@@ -30,27 +39,15 @@ A package to make an LLM talk with itself for eternity.
     cd theendisnever
     conda env update --prune -f environment.yml
     conda activate theendisnever
-    pip install -r prod.txt
-    cd ..
-    rm -rf theendisnever
+    pip install -r requirements.txt
     ```
 
-1. Run the package:
+1. Make your changes.
+  a. Remember to update the `requires` and `version` fields in `pyproject.toml` as necessary
 
-   ```bash
-   python -c "from theendisnever.theend import isnever; isnever(model_name='Fredithefish/ScarletPajama-3B-HF', prompt='THE END IS NEVER THE END IS NEVER ', max_memory_ratio=0.25)"
-   ```
-
-## Contributing
-
-1. [Email me](ajhinh@gmail.com) to be added as a collaborator (on GitHub, TestPyPI, and PyPI)
-1. Follow the steps in the [Setup](#setup) section above, except:
-  a. Replace `pip install -r prod.txt` with `pip install -r dev.txt`, keeping in mind this change for the [Requirements](#requirements) section above if applicable
-1. Make your changes
-  a. Remember to update the version number in `pyproject.toml` as necessary
-
-1. Run `python -m build` to build the package, removing old builds from dist/ first if necessary
-1. Run `python -m twine upload --repository theendisnever dist/*` to upload the package to TestPyPI
-1. Run `pip install --index-url https://test.pypi.org/simple/ --no-deps --upgrade theendisnever` in a fresh environment to test the package
-1. Once confirmed to work, make a PR from a feature branch to main on GitHub
-1. Once PR is merged, run `python -m twine upload dist/*` to upload the package to PyPI
+1. Run `python -m build` to build the package, removing old builds from dist/ first if necessary.
+1. Run `python -m twine upload --repository theendisnever dist/*` to upload the package to TestPyPI.
+1. Run `pip install --index-url https://test.pypi.org/simple/ --no-deps --upgrade theendisnever` in a fresh environment to test the package.
+1. Once confirmed to work, make a PR from a feature branch to main on GitHub.
+1. Once PR is merged, [email me](ajhinh@gmail.com) to be added as a collaborator on PyPI.
+1. Once added as a collaborator, run `python -m twine upload dist/*` to upload the package to PyPI.

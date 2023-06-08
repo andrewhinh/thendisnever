@@ -1,10 +1,15 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = [
+  "setuptools>=61.0",
+  "torch>=2.0.0",
+  "transformers>=4.0.0",
+
+]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "theendisnever"
-version = "1.0.0"
+version = "1.1.0"
 authors = [
   { name="Andrew Hinh", email="ajhinh@gmail.com" },
 ]
