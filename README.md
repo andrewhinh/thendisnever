@@ -1,13 +1,17 @@
 # The End is Never
 
-A script to make an LLM talk with itself for eternity.
+A package to make an LLM talk with itself for eternity.
 
 ## Requirements
 
-- GPU with CUDA support
-- ~6GB of free disk space
+- GPU with CUDA support (recommended, can use Google Colab)
+  - If you want to use the CPU (not recommended because it's slow, but it works):
+    - Before running `pip install -r requirements.txt` as mentioned in the first step of the [Local Setup](#local-setup) section below:
+      1. Remove `torch`, `torchvision`, and `torchaudio` from `requirements.txt`
+      1. Follow the instructions [here](https://pytorch.org/get-started/locally/) to install PyTorch without CUDA support
+- ~6GB of free disk space (for the LLM)
 
-## Setup
+## Local Setup
 
 1. Install conda if necessary:
 
@@ -20,19 +24,18 @@ A script to make an LLM talk with itself for eternity.
 2. Create the conda environment and install pip packages locally:
 
     ```bash
-    git clone https://github.com/andrewhinh/phatic.git
-    cd phatic
+    git clone https://github.com/andrewhinh/theendisnever.git
+    cd theendisnever
     conda env update --prune -f environment.yml
-    conda activate phatic
+    conda activate theendisnever
     pip install -r requirements.txt
-    export PYTHONPATH=.
-    echo "export PYTHONPATH=.:$PYTHONPATH" >> ~/.bashrc (or ~/.zshrc)
-    # If on Windows, the last two lines probably won't work. Check out this guide for more info: https://datatofish.com/add-python-to-windows-path/
+    cd ..
+    rm -rf theendisnever
     ```
 
-3. Run the script:
+3. In a `.py` file, import and run the package:
 
-   ```bash
-   . ./run.sh
-   # This reruns `main.py` in case downloading model/some other issue occurs, so rest assured this will happen for eternity.
+   ```python
+   from theendisnever import theend
+   theend.isnever() # This should run forever unless a (known) issue occurs or you stop it; if not, wrap it in a while True loop
    ```
