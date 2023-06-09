@@ -31,8 +31,7 @@ isnever(
     poetry install
     ```
 
-1. Make your changes.
-  a. Remember to update `version` in `tool.poetry` and `tool.poetry.dependencies` as necessary
+1. Make your changes, remembering to update in `pyproject.toml` the `version` in the `tool.poetry` section and the `tool.poetry.dependencies` section as necessary.
 
 1. Build the package:
 
