@@ -3,7 +3,7 @@
 A package to make an LLM talk with itself for eternity.
 
 ```python
-from thendisnever.theend import isnever
+from thendisnever.thend import isnever
 isnever(
   model_name='Fredithefish/ScarletPajama-3B-HF', # Default LLM
   prompt='THE END IS NEVER THE END IS NEVER ', # Default prompt
@@ -13,9 +13,6 @@ isnever(
 
 ## Notes
 
-- For the default LLM (which you can change as shown above), you'll need at least:
-  - ~ 6GB of free disk space
-  - ~ 15GB of RAM
 - When running `isnever()` for the first time, it will download the model and tokenizer from HuggingFace. This will take a while, but it only needs to be done once.
 - If you want to use the CPU (not recommended because it's slow, but it works), make sure you have [PyTorch for CPU](https://pytorch.org/get-started/locally/) installed.
 
@@ -39,22 +36,10 @@ isnever(
     poetry build
     ```
 
-1. Add `TestPyPI` as a source:
-
-    ```bash
-    poetry config repositories.testpypi https://test.pypi.org/legacy/
-    ```
-
-1. Publish the package to `TestPyPI`:
-
-    ```bash
-    poetry publish -r testpypi
-    ```
-
 1. Test the package in a fresh environment:
 
     ```bash
-    pip install --index-url https://test.pypi.org/simple/ --no-deps --upgrade thendisnever
+    pip install dist/thendisnever-<version>.tar.gz
     ```
 
 1. Once confirmed to work, make a PR from a feature branch to main on GitHub.
@@ -62,5 +47,6 @@ isnever(
 1. Once added as a collaborator, publish the package to `PyPI`:
   
       ```bash
+      poetry config pypi-token.pypi <your-token> # Get your token from https://pypi.org/manage/account/token/
       poetry publish
       ```
