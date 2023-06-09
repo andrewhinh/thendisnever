@@ -14,11 +14,15 @@ def isnever(
             # Setup the model
             model = AutoModelForCausalLM.from_pretrained(model_name) # To load the model
             tokenizer = AutoTokenizer.from_pretrained(model_name) # To load the tokenizer
-            streamer = TextStreamer(tokenizer) # To create the streamer
+            streamer = TextStreamer(
+                tokenizer, # To tokenize the response
+                skip_prompt=True # To skip the prompt when streaming
+            ) # To create the streamer
 
             # Setup the conversation loop
             max_length = model.config.max_length # To get the max length of the model
             max_memory = int(max_length * max_memory_ratio) # To calculate the max memory of the model
+            print(prompt) # To print the initial prompt since it's not streamed
             while True: # To loop the conversation
                 inputs = tokenizer(
                     [prompt], # wrapping prompt as a list since inputs are usually a batch
