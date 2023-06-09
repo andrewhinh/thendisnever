@@ -7,7 +7,7 @@ from thendisnever.thend import isnever
 isnever(
   model_name='Fredithefish/ScarletPajama-3B-HF', # Default LLM
   prompt='THE END IS NEVER THE END IS NEVER ', # Default prompt
-  max_memory_ratio=0.25 # Default % of latest tokens to remember, 0 < % < 1
+  max_memory_ratio=0.5 # Default % of latest tokens to remember, 0 < % < 1
 )
 ```
 
