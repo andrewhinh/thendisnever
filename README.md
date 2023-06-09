@@ -43,7 +43,7 @@ isnever(
     ```
 
 1. Once confirmed to work, make a PR from a feature branch to main on GitHub.
-1. Once PR is merged, [email me](ajhinh@gmail.com) to be added as a collaborator on PyPI.
+1. Once PR is merged, [email me](mailto:ajhinh@gmail.com) to be added as a collaborator on PyPI.
 1. Once added as a collaborator, publish the package to `PyPI`:
   
       ```bash
