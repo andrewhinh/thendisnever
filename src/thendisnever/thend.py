@@ -63,27 +63,29 @@ def isnever(
         int(max_length * max_memory_ratio) + 1
     )  # Add 1 to avoid empty prompt
 
+    # Check if prompt is too long
+    inputs = tokenizer(
+        [
+            prompt
+        ],  # Wrap prompt as a list since inputs are usually a batch
+        return_tensors="pt",  # Return PyTorch tensors
+    )['input_ids'][0] # Text to tokens, index 0 because only one prompt
+    if len(inputs) >= max_length: # If the prompt is too long
+        inputs = inputs[:max_length - 1] # Only keep the first max_length - 1 tokens (- 1 to give model space to generate)
+        prompt = tokenizer.decode(
+            inputs,
+            skip_special_tokens=True,  # To remove special tokens like <eos>
+        )  # Tokens to text
+    print(prompt)  # Print the initial prompt since it's not streamed
+    
     # Set up the conversation loop, where the response is used as the next prompt
     while True:
         inputs = tokenizer(
             [
                 prompt
             ],  # Wrap prompt as a list since inputs are usually a batch
-            return_tensors="pt",  # Return PyTorch tensors
-        ) # Text to tokens
-        if len(inputs[0]) > max_length: # If the prompt is too long
-            inputs[0] = inputs[0][:max_length] # Only keep the first max_length tokens
-            prompt = tokenizer.decode(
-                inputs[0],  # index 0 since inputs are usually a batch
-                skip_special_tokens=True,  # To remove special tokens like <eos>
-            )  # Tokens to text
-            inputs = tokenizer(
-                [
-                    prompt
-                ],  # Wrap prompt as a list since inputs are usually a batch
-                return_tensors="pt",  # Return PyTorch tensors
-            )
-        print(prompt)  # Print the initial prompt since it's not streamed
+            return_tensors="pt",
+        )
         response = model.generate(
             **inputs,  # Unpack dictionary into keyword arguments
             streamer=streamer,
@@ -95,13 +97,14 @@ def isnever(
         prompt = tokenizer.decode(
             response[0][
                 -max_memory:
-            ],
+            ], # index 0 since inputs are usually a batch
             skip_special_tokens=True,
         )
 
 
 # Run the function for testing
+# Arguments from here: https://huggingface.co/docs/transformers/generation_strategies#multinomial-sampling
 # isnever(
-#    do_sample=True,
-#    num_beams=1,
-# ) # Arguments from here: https://huggingface.co/docs/transformers/generation_strategies#multinomial-sampling
+#     do_sample=True,
+#     num_beams=1,
+# )
