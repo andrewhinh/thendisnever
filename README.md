@@ -1,6 +1,6 @@
 # The End is Never
 
-A package to make an LLM talk with itself for eternity.
+A package to make an LLM talk with itself forever.
 
 ```python
 from thendisnever.thend import isnever
