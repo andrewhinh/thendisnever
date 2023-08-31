@@ -10,20 +10,18 @@ isnever()
 ## `is_never()` parameters
 
 - `model_name`: The model to generate text with.
-  - [This](https://huggingface.co/Fredithefish/ScarletPajama-3B-HF) is the default model.
-  - This must be a model compatible with `AutoModelForCausalLM` (see [here](https://huggingface.co/docs/transformers/model_doc/auto#transformers.AutoModelForCausalLM) for a list of compatible models).
+  - [This](https://huggingface.co/togethercomputer/RedPajama-INCITE-Base-3B-v1) is the default model.
+  - This must be a model compatible with [AutoModelForCausalLM](https://huggingface.co/docs/transformers/model_doc/auto#transformers.AutoModelForCausalLM).
 - `prompt`: The initial prompt for the model.
   - [This](https://thestanleyparable.fandom.com/wiki/The_End_Is_Never...) is the inspiration for the default prompt.
   - The length in tokens of the prompt must be less than the model's `max_length` (see [here](https://huggingface.co/docs/transformers/pad_truncation#padding-and-truncation) for more info).
 - `max_memory_ratio`: The % of past tokens to remember.
   - This must be a real number between 0 and 1, since empty prompts are not allowed (0) and the prompt must be smaller than the model's context window for generation to work (1).
-- `**kwargs`: Parameters for the `model.generate()` function.
-  - See [here](https://huggingface.co/docs/transformers/generation_strategies#text-generation-strategies) for information on what parameters are available.
 
 ## Notes
 
 - When running `isnever()` for the first time, it will download the model and tokenizer from HuggingFace. This will take a while, but it only needs to be done once.
-- If you want to use the CPU (not recommended because it's slow, but it works), make sure you have [PyTorch for CPU](https://pytorch.org/get-started/locally/) installed.
+- If you want to use the CPU (not recommended because it's slow, but it works), make sure you have [PyTorch for CPU](https://pytorch.org/get-started/locally/) installed before installing this package.
 
 ## Contributing
 
