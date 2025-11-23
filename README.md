@@ -2,11 +2,6 @@
 
 A package to make an LLM talk with itself forever.
 
-```python
-from thendisnever.thend import isnever
-isnever()
-```
-
 ## Parameters
 
 - `model_name`: The model to generate text with.
